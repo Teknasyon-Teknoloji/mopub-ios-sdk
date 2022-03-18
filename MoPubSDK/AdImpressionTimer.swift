@@ -57,6 +57,7 @@ public final class AdImpressionTimer: NSObject {
     ///     is called.
     ///     - trackingMode: The mode for determining if a view is on visible on screen.
     ///     - completion: The completion block to call for tracking the impression.
+    @available(iOSApplicationExtension, unavailable)
     init(impressionTime: TimeInterval, trackingMode: ViewVisibilityTrackingMode, completion: @escaping Completion) {
         self.impressionTime = impressionTime
         self.trackingMode = trackingMode
@@ -103,6 +104,7 @@ public final class AdImpressionTimer: NSObject {
 }
 
 // MARK: - Testing
+@available(iOSApplicationExtension, unavailable)
 internal extension AdImpressionTimer {
     // isViewVisible is specified as dynamic and internal to facilitate unit testing.
     dynamic static func isViewVisible(_ view: UIView, trackingMode: ViewVisibilityTrackingMode) -> Bool {
@@ -110,19 +112,20 @@ internal extension AdImpressionTimer {
     }
     
     // isAppActive is specified as dynamic and internal to facilitate unit testing.
-    @available(iOSApplicationExtension, unavailable)
     dynamic static var isAppActive: Bool {
         return UIApplication.shared.applicationState == .active
     }
 }
 
 // MARK: - Private
+
+@available(iOSApplicationExtension, unavailable)
 private extension AdImpressionTimer {
     struct Constants {
         /// Unit is in seconds.
         static let impressionTimerInterval: TimeInterval = 0.1
     }
-    
+
     func tick() {
         guard let view = view else {
             // If the view becomes nil, invalidate the timer.
