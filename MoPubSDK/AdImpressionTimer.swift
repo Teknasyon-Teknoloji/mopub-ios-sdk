@@ -110,6 +110,7 @@ internal extension AdImpressionTimer {
     }
     
     // isAppActive is specified as dynamic and internal to facilitate unit testing.
+    @available(iOSApplicationExtension, unavailable)
     dynamic static var isAppActive: Bool {
         return UIApplication.shared.applicationState == .active
     }
